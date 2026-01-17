@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+  </head>
+
+  <body
+    class="min-h-screen overflow-x-hidden bg-gradient-to-b from-slate-700 via-slate-800 to-slate-950 text-white"
+  >
+    <!-- Top nav -->
+    <header class="w-full">
+      <div
+        class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6"
+      >
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <div class="h-9 w-9 rounded-full bg-white/90"></div>
+          <span class="text-sm font-semibold tracking-wide text-white/90"
+            >YOUR LOGO</span
+          >
+        </div>
+
+        <!-- Links -->
+        <nav
+          class="hidden items-center gap-10 text-xs font-semibold tracking-widest text-white/70 md:flex"
+        >
+          <a href="#" class="hover:text-white">HOME</a>
+          <a href="#" class="hover:text-white">ABOUT</a>
+          <a href="#" class="hover:text-white">SERVICE</a>
+          <a href="#" class="hover:text-white">CONTACT</a>
+          <a href="#" class="hover:text-white">FAQ</a>
+        </nav>
+
+        <!-- Mobile -->
+        <button
+          class="md:hidden rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-xs text-white/80"
+        >
+          MENU
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <main class="relative mx-auto max-w-6xl px-6 pb-24 pt-10 md:pt-14">
+      <!-- Central card -->
+      <section
+        class="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-[#0d0630] via-[#2a0a50] to-[#b02ac6] shadow-[0_40px_120px_rgba(0,0,0,0.55)]"
+      >
+        <!-- soft inner glow -->
+        <div
+          class="pointer-events-none absolute inset-0 opacity-80 [background:radial-gradient(900px_400px_at_50%_15%,rgba(255,255,255,0.12),transparent_60%)]"
+        ></div>
+
+        <div
+          class="relative flex min-h-[420px] items-center justify-center px-8 py-16 md:min-h-[520px]"
+        >
+          <div class="text-center">
+            <h1 class="text-4xl font-semibold tracking-[0.55em] md:text-6xl">
+              LANDING
+            </h1>
+            <h2
+              class="mt-3 text-2xl font-medium tracking-[0.55em] text-white/85 md:text-4xl"
+            >
+              PAGE
+            </h2>
+
+            <p
+              class="mx-auto mt-8 max-w-md text-sm leading-relaxed text-white/55"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna.
+            </p>
+
+            <a
+              href="#"
+              class="mx-auto mt-10 inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-8 py-3 text-xs font-semibold tracking-widest text-white/80 backdrop-blur hover:bg-white/10"
+            >
+              LEARN MORE
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Floating blobs (outside card) -->
+      <!-- big left blob -->
+      <div
+        class="pointer-events-none absolute -left-14 top-24 h-56 w-56 rounded-[38%_62%_58%_42%/45%_45%_55%_55%] bg-gradient-to-br from-indigo-200/40 via-fuchsia-500/40 to-slate-900/60 blur-[0px] shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
+      ></div>
+
+      <!-- top-left blob -->
+      <div
+        class="pointer-events-none absolute left-10 top-10 h-44 w-44 rounded-[55%_45%_38%_62%/60%_45%_55%_40%] bg-gradient-to-br from-sky-200/35 via-violet-500/35 to-slate-900/60 shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
+      ></div>
+
+      <!-- top-right blob -->
+      <div
+        class="pointer-events-none absolute right-28 top-24 h-40 w-52 rounded-[60%_40%_55%_45%/50%_60%_40%_50%] bg-gradient-to-br from-indigo-200/30 via-fuchsia-500/35 to-slate-900/60 shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
+      ></div>
+
+      <!-- right blob -->
+      <div
+        class="pointer-events-none absolute -right-10 top-72 h-44 w-56 rounded-[55%_45%_60%_40%/45%_60%_40%_55%] bg-gradient-to-br from-sky-200/25 via-violet-500/35 to-slate-900/65 shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
+      ></div>
+
+      <!-- tiny sphere -->
+      <div
+        class="pointer-events-none absolute right-56 top-56 h-10 w-10 rounded-full bg-gradient-to-br from-white/40 via-fuchsia-400/40 to-slate-900/70 shadow-[0_20px_40px_rgba(0,0,0,0.55)]"
+      ></div>
+
+      <!-- subtle vignette at bottom-left -->
+      <div
+        class="pointer-events-none absolute -bottom-28 -left-28 h-80 w-80 rounded-full bg-black/40 blur-3xl"
+      ></div>
+    </main>
+  </body>
+  <script type="module" src="/src/main.js"></script>
+</html>
