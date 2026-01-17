@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeakSmart - AI Speech Coach</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="min-h-screen overflow-x-hidden bg-gradient-to-b from-slate-700 via-slate-800 to-slate-950 text-white">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-white mb-2">
+                <i class="fas fa-microphone-alt mr-2"></i>SpeakSmart
+            </h1>
+            <p class="text-white/60">Your AI-Powered Speech Coach</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Left Panel - Recording Controls -->
+            <div class="md:col-span-2 border border-white/10 bg-gradient-to-b from-[#0d0630] via-[#2a0a50] to-[#b02ac6] rounded-2xl shadow-[0_40px_120px_rgba(0,0,0,0.55)] p-6">
+                <!-- soft inner glow -->
+                <div class="pointer-events-none absolute inset-0 opacity-80 [background:radial-gradient(900px_400px_at_50%_15%,rgba(255,255,255,0.12),transparent_60%)] rounded-2xl"></div>
+                
+                <div class="relative">
+                    <h2 class="text-2xl font-semibold text-white mb-4">Practice Session</h2>
+                    
+                    <!-- Recording Area -->
+                    <div class="bg-white/5 backdrop-blur rounded-lg border border-white/10 p-8 text-center mb-6">
+                        <div id="recordingIndicator" class="hidden mb-4">
+                            <div class="inline-block bg-red-500 w-4 h-4 rounded-full animate-pulse"></div>
+                            <span class="text-white ml-2">Recording...</span>
+                        </div>
+                        
+                        <div id="timer" class="text-white text-5xl font-bold mb-6">00:00</div>
+                        
+                        <div class="flex justify-center gap-4">
+                            <button id="recordBtn" class="bg-white/10 backdrop-blur text-white border border-white/25 px-8 py-3 rounded-full font-semibold hover:bg-white/20 transition">
+                                <i class="fas fa-microphone mr-2"></i>Start Recording
+                            </button>
+                            <button id="stopBtn" class="bg-red-500/80 backdrop-blur text-white px-8 py-3 rounded-full font-semibold hover:bg-red-600/80 transition hidden">
+                                <i class="fas fa-stop mr-2"></i>Stop
+                            </button>
+                        </div>
+                        
+                        <!-- Try Again / Submit buttons (shown after stopping) -->
+                        <div id="actionButtons" class="flex justify-center gap-4 mt-4 hidden">
+                            <button id="retryBtn" class="bg-white/10 backdrop-blur text-white border border-white/25 px-8 py-3 rounded-full font-semibold hover:bg-white/20 transition">
+                                <i class="fas fa-redo mr-2"></i>Try Again
+                            </button>
+                            <button id="submitBtn" class="bg-gradient-to-r from-fuchsia-500 to-violet-500 text-white px-8 py-3 rounded-full font-semibold hover:from-fuchsia-600 hover:to-violet-600 transition">
+                                <i class="fas fa-check mr-2"></i>Submit
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Analysis Results -->
+                    <div id="analysisPanel" class="hidden">
+                        <h3 class="text-xl font-semibold text-white mb-4">Session Analysis</h3>
+                        
+                        <!-- Metrics Grid -->
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-white/5 backdrop-blur border border-white/10 rounded-lg p-4">
+                                <div class="text-sm text-white/60 mb-1">Clarity</div>
+                                <div class="text-2xl font-bold text-green-400">85%</div>
+                            </div>
+                            <div class="bg-white/5 backdrop-blur border border-white/10 rounded-lg p-4">
+                                <div class="text-sm text-white/60 mb-1">Pace (WPM)</div>
+                                <div class="text-2xl font-bold text-blue-400">142</div>
+                            </div>
+                            <div class="bg-white/5 backdrop-blur border border-white/10 rounded-lg p-4">
+                                <div class="text-sm text-white/60 mb-1">Volume</div>
+                                <div class="text-2xl font-bold text-purple-400">Good</div>
+                            </div>
+                            <div class="bg-white/5 backdrop-blur border border-white/10 rounded-lg p-4">
+                                <div class="text-sm text-white/60 mb-1">Filler Words</div>
+                                <div class="text-2xl font-bold text-yellow-400">3</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Feedback -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold text-green-400 mb-3">Strengths</h4>
+                                <ul class="space-y-2 text-sm text-white/70">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-400 mr-2 mt-1"></i>
+                                        <span>Excellent vocal variety and tone modulation</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-400 mr-2 mt-1"></i>
+                                        <span>Clear pronunciation and articulation</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-400 mr-2 mt-1"></i>
+                                        <span>Good use of pauses for emphasis</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-orange-400 mb-3">Areas to Improve</h4>
+                                <ul class="space-y-2 text-sm text-white/70">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-exclamation-circle text-orange-400 mr-2 mt-1"></i>
+                                        <span>Reduce filler words like "um" and "uh"</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-exclamation-circle text-orange-400 mr-2 mt-1"></i>
+                                        <span>Slow down pace slightly in complex sections</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-exclamation-circle text-orange-400 mr-2 mt-1"></i>
+                                        <span>Add more emphasis on key points</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Session Info & History -->
+            <div class="space-y-6">
+                <!-- Session Summary -->
+                <div class="border border-white/10 bg-gradient-to-b from-slate-800/80 to-slate-900/80 backdrop-blur rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-white mb-4">
+                        <i class="fas fa-chart-line mr-2 text-fuchsia-400"></i>Progress
+                    </h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-white/60">Overall Score</span>
+                                <span class="font-semibold text-white">82%</span>
+                            </div>
+                            <div class="w-full bg-white/10 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-fuchsia-500 to-violet-500 h-2 rounded-full" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-white/60">Sessions This Week</span>
+                                <span class="font-semibold text-white">7</span>
+                            </div>
+                            <div class="w-full bg-white/10 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-sky-400 to-indigo-500 h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Sessions -->
+                <div class="border border-white/10 bg-gradient-to-b from-slate-800/80 to-slate-900/80 backdrop-blur rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-white mb-4">
+                        <i class="fas fa-history mr-2 text-fuchsia-400"></i>Recent Sessions
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="border-l-4 border-green-400 pl-3 py-2 bg-white/5 rounded">
+                            <div class="font-semibold text-sm text-white">Interview Practice</div>
+                            <div class="text-xs text-white/50">Today, 2:30 PM • Score: 88%</div>
+                        </div>
+                        <div class="border-l-4 border-blue-400 pl-3 py-2 bg-white/5 rounded">
+                            <div class="font-semibold text-sm text-white">Presentation Prep</div>
+                            <div class="text-xs text-white/50">Yesterday • Score: 85%</div>
+                        </div>
+                        <div class="border-l-4 border-purple-400 pl-3 py-2 bg-white/5 rounded">
+                            <div class="font-semibold text-sm text-white">Sales Pitch</div>
+                            <div class="text-xs text-white/50">2 days ago • Score: 79%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Removed separate feedback section -->
+    </div>
+
+    
+</body>
+<script src="speaking.js"></script>
+</html>
