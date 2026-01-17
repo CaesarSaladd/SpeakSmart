@@ -50,3 +50,22 @@ submitBtn.addEventListener('click', () => {
     analysisPanel.classList.remove('hidden');
     timer.textContent = '00:00';
 });
+
+// Toggle session details
+function toggleSession(sessionId) {
+    const details = document.getElementById(sessionId);
+    const icon = document.getElementById(sessionId + '-icon');
+    
+    if (details.classList.contains('hidden')) {
+        details.classList.remove('hidden');
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+    } else {
+        details.classList.add('hidden');
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+    }
+}
+
+// Make toggleSession globally accessible
+window.toggleSession = toggleSession;
