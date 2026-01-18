@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Login • AI Speaking Coach</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+</head>
+
+<body
+    class="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black text-white flex items-center justify-center px-4">
+
+    <div class="w-full max-w-md bg-gray-900/80 backdrop-blur rounded-3xl p-8 shadow-2xl border border-gray-800">
+
+        <!-- Logo -->
+        <div class="flex justify-center mb-6">
+            <img src="./logo.png" alt="AI Speaking Coach" class="h-24" />
+        </div>
+
+        <!-- Alert -->
+        <div id="authAlert"
+            class="hidden mb-4 rounded-xl bg-red-500/10 border border-red-500/40 px-4 py-3 text-sm text-red-400"
+            role="alert" aria-live="assertive"></div>
+
+        <!-- LOGIN VIEW -->
+        <div id="loginView">
+            <h2 class="text-2xl font-bold text-center mb-6">
+                Welcome back
+            </h2>
+
+            <form id="loginForm" class="space-y-4">
+                <input id="loginEmail" type="email" placeholder="Email"
+                    class="w-full rounded-xl bg-gray-800 border border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+
+                <input id="loginPassword" type="password" placeholder="Password"
+                    class="w-full rounded-xl bg-gray-800 border border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+
+                <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 active:scale-95 transition-all rounded-xl py-3 font-semibold shadow-lg">
+                    Log In
+                </button>
+            </form>
+
+            <p class="text-center text-sm text-gray-400 mt-6">
+                Don’t have an account?
+                <a href="#" id="toSignup" class="text-blue-400 hover:underline">
+                    Sign up
+                </a>
+            </p>
+        </div>
+
+        <!-- SIGNUP VIEW -->
+        <div id="signupView" class="hidden">
+            <h2 class="text-2xl font-bold text-center mb-6">
+                Create account
+            </h2>
+
+            <form id="signupForm" class="space-y-4">
+                <input id="signupName" type="text" placeholder="Full name"
+                    class="w-full rounded-xl bg-gray-800 border border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+
+                <input id="signupEmail" type="email" placeholder="Email"
+                    class="w-full rounded-xl bg-gray-800 border border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+
+                <input id="signupPassword" type="password" placeholder="Password"
+                    class="w-full rounded-xl bg-gray-800 border border-gray-700 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600" />
+
+                <button type="submit"
+                    class="w-full bg-green-600 hover:bg-green-700 active:scale-95 transition-all rounded-xl py-3 font-semibold shadow-lg">
+                    Sign Up
+                </button>
+            </form>
+
+            <p class="text-center text-sm text-gray-400 mt-6">
+                Already have an account?
+                <a href="#" id="toLogin" class="text-blue-400 hover:underline">
+                    Log in
+                </a>
+            </p>
+        </div>
+
+    </div>
+
+    <script type="module" src="./src/Login.js"></script>
+</body>
+
+</html>
