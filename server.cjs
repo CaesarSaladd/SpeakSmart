@@ -8,7 +8,10 @@ const FormData = require("form-data");
 // IMPORTANT: Force node-fetch v2 (reliable with form-data)
 const fetch = require("node-fetch");
 
-require("dotenv").config({ path: path.resolve(__dirname, ".env") });
+// Load .env ONLY for local dev (Render uses dashboard env vars)
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -32,7 +35,14 @@ const analyzeLimiter = rateLimit({
 // ---------------- MIDDLEWARE ----------------
 app.use(express.json({ limit: "12mb" }));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname)));
+
+// Serve built frontend on Render (vite build => dist)
+const staticDir =
+  process.env.NODE_ENV === "production"
+    ? path.join(__dirname, "dist")
+    : __dirname;
+
+app.use(express.static(staticDir));
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -105,7 +115,7 @@ app.post(
       if (!ELEVENLABS_API_KEY) {
         return res
           .status(500)
-          .json({ ok: false, error: "Missing ELEVENLABS_API_KEY in .env" });
+          .json({ ok: false, error: "Missing ELEVENLABS_API_KEY" });
       }
 
       if (!req.file) {
@@ -119,17 +129,14 @@ app.post(
       // ---- Build multipart request for ElevenLabs ----
       const form = new FormData();
 
-      // ElevenLabs STT: send model_id + file
       form.append("model_id", ELEVENLABS_STT_MODEL_ID);
 
-      // Use "file" (most STT APIs expect file)
       form.append("file", audioBuffer, {
         filename: "recording.webm",
         contentType: mimeType,
         knownLength: audioBuffer.length,
       });
 
-      // Debug: log headers (no secrets)
       const headers = {
         "xi-api-key": ELEVENLABS_API_KEY,
         ...form.getHeaders(),
@@ -214,6 +221,6 @@ app.post(
 );
 
 app.listen(PORT, () => {
-  console.log(`✅ Server running: http://localhost:${PORT}`);
-  console.log(`✅ Health: http://localhost:${PORT}/api/health`);
+  console.log(`Server running on port ${PORT}`);
+  console.log(`Health: /api/health`);
 });
