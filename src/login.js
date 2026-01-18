@@ -74,7 +74,11 @@ function initAuthUI() {
     setSubmitDisabled(loginForm, true);
     try {
       await loginUser(email, password);
-      location.href = redirectUrl;
+      const redirect =
+        sessionStorage.getItem("afterLoginRedirect") || redirectUrl;
+
+      sessionStorage.removeItem("afterLoginRedirect");
+      location.href = redirect;
     } catch (err) {
       showError(authErrorMessage(err));
       console.error(err);
