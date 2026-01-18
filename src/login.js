@@ -104,7 +104,6 @@ function initAuthUI() {
         setSubmitDisabled(signupForm, true);
         try {
             await signupUser(name, email, password);
-            location.href = redirectUrl;
         } catch (err) {
             showError(authErrorMessage(err));
             console.error(err);
