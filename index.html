@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Login • AI Speaking Coach</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/styles.css" />
+    <title>Home • SpeechMentor</title>
   </head>
 
   <body
@@ -21,6 +22,7 @@
           >
             <img
               src="images/logo.png"
+              alt="SpeechMentor Logo"
               class="block h-full w-full rounded-full object-cover"
             />
           </div>
@@ -33,13 +35,12 @@
         <nav
           class="hidden items-center gap-10 text-sm font-semibold tracking-widest text-white/70 md:flex"
         >
-          <a href="#" class="hover:text-white">HOME</a>
+          <a href="index.html" class="hover:text-white">HOME</a>
           <a href="about.html" class="hover:text-white">ABOUT</a>
           <a href="#" class="hover:text-white">SERVICE</a>
           <a href="#" class="hover:text-white">CONTACT</a>
           <a href="#" class="hover:text-white">FAQ</a>
 
-          <!-- Login -->
           <a
             href="login.html"
             class="ml-2 inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-5 py-2 text-xs font-semibold tracking-widest text-white/85 backdrop-blur hover:bg-white/10 hover:text-white transition"
@@ -48,9 +49,9 @@
           </a>
         </nav>
 
-        <!-- Mobile -->
         <button
           class="md:hidden rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-xs text-white/80"
+          type="button"
         >
           MENU
         </button>
@@ -59,11 +60,9 @@
 
     <!-- Hero -->
     <main class="relative mx-auto max-w-6xl px-6 pb-24 pt-10 md:pt-14">
-      <!-- Central card -->
       <section
         class="relative mx-auto w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-[#0d0630] via-[#2a0a50] to-[#b02ac6] shadow-[0_40px_120px_rgba(0,0,0,0.55)]"
       >
-        <!-- soft inner glow -->
         <div
           class="pointer-events-none absolute inset-0 opacity-80 [background:radial-gradient(900px_400px_at_50%_15%,rgba(255,255,255,0.12),transparent_60%)]"
         ></div>
@@ -88,8 +87,8 @@
             </p>
 
             <a
-              href="/speaking.html"
-              class="mx-auto mt-10 inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-8 py-3 text-xs font-semibold tracking-widest text-white/80 backdrop-blur hover:bg-white/10"
+              href="speaking.html"
+              class="mx-auto mt-10 inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 px-8 py-3 text-xs font-semibold tracking-widest text-white/80 backdrop-blur hover:bg-white/10 transition"
             >
               SPEAK NOW
             </a>
@@ -101,30 +100,24 @@
       <div
         class="pointer-events-none absolute -left-14 top-24 h-56 w-56 rounded-[38%_62%_58%_42%/45%_45%_55%_55%] bg-gradient-to-br from-indigo-200/40 via-fuchsia-500/40 to-slate-900/60 shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
       ></div>
-
       <div
         class="pointer-events-none absolute left-10 top-10 h-44 w-44 rounded-[55%_45%_38%_62%/60%_45%_55%_40%] bg-gradient-to-br from-sky-200/35 via-violet-500/35 to-slate-900/60 shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
       ></div>
-
       <div
         class="pointer-events-none absolute right-28 top-24 h-40 w-52 rounded-[60%_40%_55%_45%/50%_60%_40%_50%] bg-gradient-to-br from-indigo-200/30 via-fuchsia-500/35 to-slate-900/60 shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
       ></div>
-
       <div
         class="pointer-events-none absolute -right-10 top-72 h-44 w-56 rounded-[55%_45%_60%_40%/45%_60%_40%_55%] bg-gradient-to-br from-sky-200/25 via-violet-500/35 to-slate-900/65 shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
       ></div>
-
       <div
         class="pointer-events-none absolute right-56 top-56 h-10 w-10 rounded-full bg-gradient-to-br from-white/40 via-fuchsia-400/40 to-slate-900/70 shadow-[0_20px_40px_rgba(0,0,0,0.55)]"
       ></div>
-
       <div
         class="pointer-events-none absolute -bottom-28 -left-28 h-80 w-80 rounded-full bg-black/40 blur-3xl"
       ></div>
     </main>
 
-    <!-- Scripts -->
-    <script type="module" src="/src/app.js"></script>
+    <!-- ✅ This is what loads your local tailwind (main.js imports styles.css) -->
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
